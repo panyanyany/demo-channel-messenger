@@ -1,0 +1,36 @@
+{
+  "name": "demo-channel-messenger",
+  "version": "0.0.1",
+  "description": "A demo project.",
+  "type": "commonjs",
+  "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/plugin-proposal-decorators": "^7.18.10",
+    "@babel/plugin-syntax-decorators": "^7.18.6",
+    "@babel/preset-env": "^7.18.10",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/jest": "^28.1.6",
+    "@types/node": "^16.11.10",
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^28.1.3",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^28.1.3",
+    "superagent": "^8.0.0",
+    "supertest": "^6.2.4",
+    "ts-jest": "^28.0.7",
+    "ts-node": "10.7.0",
+    "typescript": "4.5.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "mysql": "^2.14.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "0.3.7"
+  },
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "test": "jest"
+  }
+}
