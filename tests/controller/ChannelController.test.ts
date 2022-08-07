@@ -30,9 +30,13 @@ describe("Test the channel path", () => {
         expect(response.body.length).toBe(2)
     });
 
-    test("It should return a list containing 3 items", async () => {
-        const response = await request(app).post("/channels").field('name', 'Baby')
+    test("It should create a new channel", async () => {
+        let response = await request(app).post("/channels").send({'name': 'Baby'}).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200)
+    });
+
+    test("It should return a list containing 3 items", async () => {
+        let response = await request(app).get("/channels")
         expect(response.body.length).toBe(3)
     });
 });

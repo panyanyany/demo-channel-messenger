@@ -11,7 +11,6 @@ export class ChannelController {
     }
 
     async save(request: Request, response: Response, next: NextFunction) {
-        console.log('----body', request.body)
         const model = new Channel()
         model.name = request.body.name
         return await this.channelRepository.save(model)
