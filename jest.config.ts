@@ -17,7 +17,7 @@ export default {
   clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
-  collectCoverage: true,
+  // collectCoverage: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: undefined,
@@ -67,7 +67,7 @@ export default {
   // A set of global variables that need to be available in all test environments
   globals: {
     'ts-jest': {
-      tsConfig: 'tsconfig.json'
+      tsconfig: 'tsconfig.json'
     }
   },
 

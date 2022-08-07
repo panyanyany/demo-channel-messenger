@@ -1,18 +1,35 @@
 import "reflect-metadata"
 import {DataSource} from "typeorm"
-import {Channel} from "./entity/Channel";
-import {Message} from "./entity/Message";
+import settings from "./settings";
 
-export const AppDataSource = new DataSource({
-    type: "mysql",
-    host: "localhost",
-    port: 3306,
-    username: "ubuntu",
-    password: "ubuntu",
-    database: "demo_channel_messenger",
-    synchronize: true,
-    logging: false,
-    entities: [Channel, Message],
-    migrations: [],
-    subscribers: [],
-})
+let ds: DataSource
+
+// we're in jest
+if (process.env.NODE_ENV === 'test') {
+    ds = new DataSource({
+        type: "sqlite",
+        database: ":memory:",
+        dropSchema: true,
+        entities: [__dirname + '/entity/*.ts'],
+        synchronize: true,
+        logging: false
+    });
+
+} else {
+    // in production
+    ds = new DataSource({
+        type: "mysql",
+        host: "localhost",
+        port: 3306,
+        username: settings.db.username,
+        password: settings.db.password,
+        database: settings.db.database,
+        synchronize: true,
+        logging: false,
+        entities: [__dirname + '/entity/*.ts'],
+        migrations: [],
+        subscribers: [],
+    })
+}
+
+export const AppDataSource = ds

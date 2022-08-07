@@ -11,11 +11,14 @@ export class ChannelController {
     }
 
     async save(request: Request, response: Response, next: NextFunction) {
-        return this.channelRepository.save(request.body)
+        console.log('----body', request.body)
+        const model = new Channel()
+        model.name = request.body.name
+        return await this.channelRepository.save(model)
     }
 
     async remove(request: Request, response: Response, next: NextFunction) {
-        let userToRemove = await this.channelRepository.findOneBy({id: request.params.id})
+        let userToRemove = await this.channelRepository.findOneBy({id: parseInt(request.params.id)})
         await this.channelRepository.remove(userToRemove)
     }
 
