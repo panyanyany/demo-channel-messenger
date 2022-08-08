@@ -7,8 +7,6 @@ export const Routes = [
     {route: "/channels", method: "get", controller: ChannelController, action: "all"},
     // create channel
     {route: "/channels", method: "post", controller: ChannelController, action: "save"},
-    // delete channel
-    {route: "/channels/:id", method: "delete", controller: ChannelController, action: "remove"},
     // create message
     {
         route: "/messages", method: "post", controller: MessageController, action: "save", validations: [
@@ -17,6 +15,7 @@ export const Routes = [
             body('content').isString().isLength({max: 1024}),
         ]
     },
+    // list messages
     {
         route: "/messages", method: "get", controller: MessageController, action: "list", validations: [
             query('channel_id').isNumeric().optional(),

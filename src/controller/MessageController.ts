@@ -7,6 +7,7 @@ export class MessageController {
 
     private messageRepository = AppDataSource.getRepository(Message)
 
+    // Get message list
     async list(request: Request, response: Response, next: NextFunction) {
         const options: FindManyOptions<Message> = {}
         const page = parseInt((request.query.page || '1').toString())
@@ -37,6 +38,7 @@ export class MessageController {
         return pagination
     }
 
+    // Create a message to channel
     async save(request: Request, response: Response, next: NextFunction) {
         const model = new Message()
         model.channel = request.body.channel_id
@@ -44,10 +46,4 @@ export class MessageController {
         model.content = request.body.content
         return await this.messageRepository.save(model)
     }
-
-    async remove(request: Request, response: Response, next: NextFunction) {
-        let userToRemove = await this.messageRepository.findOneBy({id: parseInt(request.params.id)})
-        return await this.messageRepository.remove(userToRemove)
-    }
-
 }
