@@ -46,7 +46,7 @@ app.use(function (err: Error, req, res, next) {
     // console.log(err)
     logger.error('Error:', err)
     console.error(err)
-    res.status(500).send('Something broke!')
+    res.status(500).json({code: -1, message: 'Server error'})
 })
 
 module.exports = app
