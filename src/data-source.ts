@@ -19,7 +19,6 @@ if (process.env.NODE_ENV === 'test') {
     ds = new DataSource({
         type: "sqlite",
         database: "storage/database.sqlite",
-        dropSchema: true,
         entities: [__dirname + '/entity/*.ts'],
         synchronize: true,
         logging: false

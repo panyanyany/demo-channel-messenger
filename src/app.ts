@@ -8,7 +8,9 @@ import {logger} from "./util/logging";
 
 // create express app
 const app = express()
+const formData = require('express-form-data')
 app.use(bodyParser.json())
+app.use(formData.parse())
 app.use(express.urlencoded({extended: true}))
 app.use(morganMiddleware)
 

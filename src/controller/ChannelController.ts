@@ -14,6 +14,11 @@ export class ChannelController {
 
     // Create a channel
     async save(request: Request, response: Response, next: NextFunction) {
+        const existed = await this.channelRepository.findOne({where: {name: request.body.name}})
+        if (existed) {
+            response.status(400).json({code: 1, message: 'Already exists'})
+            return
+        }
         const model = new Channel()
         model.name = request.body.name
         const result = await this.channelRepository.save(model)

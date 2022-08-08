@@ -24,6 +24,12 @@ describe("Test the channel path", () => {
         await AppDataSource.destroy()
     });
 
+    test("It should not create same model", async () => {
+        const response = await request(app).post("/channels").send({'name': 'Work'})
+        expect(response.statusCode).toBe(400)
+        expect(response.body.code).toBe(1)
+    });
+
     test("It should return a list containing 2 items", async () => {
         const response = await request(app).get("/channels")
         expect(response.statusCode).toBe(200)

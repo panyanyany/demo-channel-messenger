@@ -33,6 +33,16 @@ describe("Test the message path", () => {
         expect(response.statusCode).toBe(200)
     });
 
+    test("It should failed for not existed channel", async () => {
+        let response = await request(app).post("/messages").send({
+            'channel_id': 1000,
+            'title': 'hello world!',
+            'content': 'This is my first message.',
+        }).set('Accept', 'application/json')
+        expect(response.statusCode).toBe(400)
+        expect(response.body.code).toBe(2)
+    });
+
     test("It should create 3 messages", async () => {
         const messages = [
             {'channel_id': 1, 'title': 'msg1', 'content': 'This is my No.1 message.',},

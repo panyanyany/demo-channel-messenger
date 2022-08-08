@@ -2,10 +2,12 @@ import {NextFunction, Request, Response} from "express"
 import {AppDataSource} from "../data-source";
 import {Message} from "../entity/Message";
 import {FindManyOptions} from "typeorm";
+import {Channel} from "../entity/Channel";
 
 export class MessageController {
 
     private messageRepository = AppDataSource.getRepository(Message)
+    private channelRepository = AppDataSource.getRepository(Channel)
 
     // Get message list
     async list(request: Request, response: Response, next: NextFunction) {
@@ -42,6 +44,11 @@ export class MessageController {
 
     // Create a message to channel
     async save(request: Request, response: Response, next: NextFunction) {
+        const existed = await this.channelRepository.findOne({where: {id: request.body.channel_id}})
+        if (!existed) {
+            response.status(400).json({code: 2, message: 'Channel not exists'})
+            return
+        }
         const model = new Message()
         model.channel = request.body.channel_id
         model.title = request.body.title
