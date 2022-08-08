@@ -1,6 +1,7 @@
 import {NextFunction, Request, Response} from "express"
 import {AppDataSource} from "../data-source";
 import {Channel} from "../entity/Channel";
+import {logger} from "../util/logging";
 
 export class ChannelController {
 
