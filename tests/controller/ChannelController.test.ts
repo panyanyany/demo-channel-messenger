@@ -32,6 +32,7 @@ describe("Test the channel path", () => {
 
     test("It should create a new channel", async () => {
         let response = await request(app).post("/channels").send({'name': 'Baby'}).set('Accept', 'application/json')
+        // let response = await request(app).post("/channels").send('name=Baby')
         expect(response.statusCode).toBe(200)
     });
 
