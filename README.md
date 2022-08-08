@@ -1,6 +1,6 @@
 # A demo project of channel messenger
 
-## Deploy
+## Deployment
 Steps to run this project:
 
 1. Run `npm install` command
