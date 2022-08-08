@@ -1,6 +1,6 @@
 import "reflect-metadata"
 import {DataSource} from "typeorm"
-import settings from "./settings";
+// import settings from "./settings";
 
 let ds: DataSource
 
@@ -14,22 +14,29 @@ if (process.env.NODE_ENV === 'test') {
         synchronize: true,
         logging: false
     });
-
 } else {
     // in production
     ds = new DataSource({
-        type: "mysql",
-        host: "localhost",
-        port: 3306,
-        username: settings.db.username,
-        password: settings.db.password,
-        database: settings.db.database,
-        synchronize: true,
-        logging: false,
+        type: "sqlite",
+        database: "storage/database.sqlite",
+        dropSchema: true,
         entities: [__dirname + '/entity/*.ts'],
-        migrations: [],
-        subscribers: [],
-    })
+        synchronize: true,
+        logging: false
+    });
+    // ds = new DataSource({
+    //     type: "mysql",
+    //     host: "localhost",
+    //     port: 3306,
+    //     username: settings.db.username,
+    //     password: settings.db.password,
+    //     database: settings.db.database,
+    //     synchronize: true,
+    //     logging: false,
+    //     entities: [__dirname + '/entity/*.ts'],
+    //     migrations: [],
+    //     subscribers: [],
+    // })
 }
 
 export const AppDataSource = ds
