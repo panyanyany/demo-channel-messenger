@@ -1,6 +1,7 @@
 # A demo project of channel messenger
 
 ## Deployment
+
 Steps to run this project:
 
 1. Run `npm install` command
@@ -8,6 +9,7 @@ Steps to run this project:
 3. Open `http://localhost:3000/messages` in browser
 
 ## Unit testing
+
 1. Run `npm test` command
 
 ## API document
@@ -19,12 +21,14 @@ Steps to run this project:
 Result:
 
 ```json
-[
-  {
+{
+  "code": 0,
+  "message": "success",
+  "data": {
     "id": 1,
     "name": "xxxx"
   }
-]
+}
 ```
 
 ### Create a channel
@@ -33,9 +37,9 @@ Result:
 
 Body:
 
-| Name      | Type   | Optional |
-|-----------|--------|----------|
-| Name      | String | No       |
+| Name | Type   | Optional |
+|------|--------|----------|
+| name | String | No       |
 
 ### Get message list
 
@@ -53,6 +57,8 @@ Result:
 
 ```json
 {
+  "code": 0,
+  "message": "success",
   "data": [
     {
       "id": 1,

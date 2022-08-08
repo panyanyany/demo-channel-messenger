@@ -31,6 +31,8 @@ export class MessageController {
             page_size: pageSize,
             page: page,
             total_page: 0,
+            code: 0,
+            message: 'success',
         }
         pagination.total = await this.messageRepository.count(options)
         pagination.data = await this.messageRepository.find(options)
@@ -44,6 +46,7 @@ export class MessageController {
         model.channel = request.body.channel_id
         model.title = request.body.title
         model.content = request.body.content
-        return await this.messageRepository.save(model)
+        const result = await this.messageRepository.save(model)
+        return {code: 0, message: 'success', ...result}
     }
 }

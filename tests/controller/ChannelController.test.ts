@@ -27,7 +27,7 @@ describe("Test the channel path", () => {
     test("It should return a list containing 2 items", async () => {
         const response = await request(app).get("/channels")
         expect(response.statusCode).toBe(200)
-        expect(response.body.length).toBe(2)
+        expect(response.body.data.length).toBe(2)
     });
 
     test("It should create a new channel", async () => {
@@ -38,6 +38,6 @@ describe("Test the channel path", () => {
 
     test("It should return a list containing 3 items", async () => {
         let response = await request(app).get("/channels")
-        expect(response.body.length).toBe(3)
+        expect(response.body.data.length).toBe(3)
     });
 });
