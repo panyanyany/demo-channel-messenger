@@ -40,4 +40,10 @@ describe("Test the channel path", () => {
         let response = await request(app).get("/channels")
         expect(response.body.data.length).toBe(3)
     });
+
+    test("It should return an error", async () => {
+        let response = await request(app).get("/channels/error")
+        expect(response.statusCode).toBe(500)
+        expect(response.body.code).toBe(-1)
+    });
 });

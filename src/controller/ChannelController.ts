@@ -19,4 +19,9 @@ export class ChannelController {
         const result = await this.channelRepository.save(model)
         return {code: 0, message: 'success', ...result}
     }
+
+    // raise an error
+    async error(request: Request, response: Response, next: NextFunction) {
+        throw new Error('something bad')
+    }
 }

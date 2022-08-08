@@ -7,6 +7,8 @@ export const Routes = [
     {route: "/channels", method: "get", controller: ChannelController, action: "all"},
     // create channel
     {route: "/channels", method: "post", controller: ChannelController, action: "save"},
+    // raise an error
+    {route: "/channels/error", method: "get", controller: ChannelController, action: "error"},
     // create message
     {
         route: "/messages", method: "post", controller: MessageController, action: "save", validations: [
