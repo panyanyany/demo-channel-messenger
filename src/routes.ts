@@ -6,7 +6,11 @@ export const Routes = [
     // all channels
     {route: "/channels", method: "get", controller: ChannelController, action: "all"},
     // create channel
-    {route: "/channels", method: "post", controller: ChannelController, action: "save"},
+    {
+        route: "/channels", method: "post", controller: ChannelController, action: "save", validations: [
+            body('name').isString().isLength({min: 2, max: 255})
+        ]
+    },
     // raise an error
     {route: "/channels/error", method: "get", controller: ChannelController, action: "error"},
     // create message
