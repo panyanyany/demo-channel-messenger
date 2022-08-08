@@ -15,10 +15,10 @@ export class MessageController {
         const channelId = parseInt((request.query.channel_id || '0').toString())
         options.where = {}
         options.order = {createdAt: "DESC"}
-        if (channelId > 0) {
-            options.relations = {}
-            options.relations.channel = true
+        options.relations = {}
+        options.relations.channel = true
 
+        if (channelId > 0) {
             options.where.channel = {}
             options.where.channel.id = channelId
         }
