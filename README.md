@@ -7,6 +7,9 @@ Steps to run this project:
 2. Run `npm start` command
 3. Open `http://localhost:3000/messages` in browser
 
+## Unit testing
+1. Run `npm test` command
+
 ## API document
 
 ### Get all channels

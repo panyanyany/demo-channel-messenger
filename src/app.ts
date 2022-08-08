@@ -41,10 +41,11 @@ Routes.forEach(route => {
     })
 })
 
-// setup express app here
 // Error handler
-app.use(function (err, req, res, next) {
+app.use(function (err: Error, req, res, next) {
+    // console.log(err)
     logger.error('Error:', err)
+    console.error(err)
     res.status(500).send('Something broke!')
 })
 
