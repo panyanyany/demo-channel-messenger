@@ -42,11 +42,10 @@ Routes.forEach(route => {
 })
 
 // setup express app here
-// ...
+// Error handler
 app.use(function (err, req, res, next) {
     logger.error('Error:', err)
     res.status(500).send('Something broke!')
-    // next(err)
 })
 
 module.exports = app
