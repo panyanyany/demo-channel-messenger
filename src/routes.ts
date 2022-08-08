@@ -1,6 +1,6 @@
 import {ChannelController} from "./controller/ChannelController"
 import {MessageController} from "./controller/MessageController";
-import {body} from "express-validator";
+import {body, query} from "express-validator";
 
 export const Routes = [
     // all channels
@@ -15,6 +15,13 @@ export const Routes = [
             body('channel_id').isNumeric(),
             body('title').isString().isLength({max: 255}),
             body('content').isString().isLength({max: 1024}),
+        ]
+    },
+    {
+        route: "/messages", method: "get", controller: MessageController, action: "list", validations: [
+            query('channel_id').isNumeric().optional(),
+            query('page').isInt({min: 1}).optional(),
+            query('page_size').isInt({min: 3}).optional(),
         ]
     },
 ]
